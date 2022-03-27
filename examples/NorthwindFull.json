@@ -1,0 +1,124 @@
+{
+    "project-name": "NorthWind",
+    "default-namespace": "Northwind",
+    "description": "A project to use Northwind database",
+    "solution-name": "Northwind",
+    "directory-path": "Northwind",
+    "dry-run": false,
+    "export-to-file": true,
+    "display-command": true,
+    "projects": [
+        {
+            "project-name": "NorthwindEngine",
+            "project-type": "classlib",
+            "namespace": "Northwind.Engine",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "ef-databases": [
+                {
+                    "context-name" : "dbcontext",
+                    "database-connection": "data source=localhost\\SQLEXPRESS2;initial catalog=Northwind;user id=NorthwindUser;password=password100"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthwindModels",
+            "project-type": "classlib",
+            "namespace": "Northwind.Models",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthwindServices",
+            "project-type": "classlib",
+            "namespace": "Northwind.Services",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "references": ["NorthwindEngine", "NorthwindModels"]
+        },
+        {
+            "project-name": "NorthwindWebsite",
+            "project-type": "empty",
+            "namespace": "Northwind.Website",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Newtonsoft.Json"
+                }
+            ],
+            "references": ["NorthwindEngine", "NorthwindModels", "NorthwindServices"]
+        }
+    ],
+    "actions": [
+        {
+            "action-name": "AddNPMPackages",
+            "description": "Create init file. Add tailwinds to project",
+            "action-type": "npm",
+            "commands": [
+                {
+                    
+                    "command": "cd ./Northwind/ && npm init -y"
+                },
+                {
+                    
+                    "command": "cd ./Northwind/ && npm i tailwindcss"
+                }
+            ]
+        }
+    ]
+}

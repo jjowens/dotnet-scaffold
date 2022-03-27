@@ -1,0 +1,24 @@
+{
+    "project-name": "ShopMVCWebsite",
+    "default-namespace": "ShopMVCWebsite",
+    "description": "A project to create an MVC website. It comes with a default template set up by DotNet Cli",
+    "solution-name": "ShopMVCWebsite",
+    "directory-path": "ShopMVCWebsite",
+    "dry-run": false,
+    "export-to-file": true,
+    "display-command": true,
+    "projects": [
+        {
+            "project-name": "ShopMVCWebsite",
+            "project-type": "MVC",
+            "namespace": "ShopMVC.Website",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Newtonsoft.Json"
+                }
+            ]
+        }
+    ]
+}

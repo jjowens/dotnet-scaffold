@@ -1,0 +1,125 @@
+{
+    "project-name": "NorthWindOverwrite",
+    "default-namespace": "NorthWindOverwrite",
+    "description": "A project to overwrite exisiting projects",
+    "solution-name": "NorthWindOverwrite",
+    "directory-path": "NorthWindOverwrite",
+    "dry-run": false,
+    "export-to-file": true,
+    "display-command": true,
+    "force-overwrite": true,
+    "projects": [
+        {
+            "project-name": "NorthWindOverwriteEngine",
+            "project-type": "classlib",
+            "namespace": "NorthWindOverwrite.Engine",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "ef-databases": [
+                {
+                    "context-name" : "dbcontext",
+                    "database-connection": "data source=localhost\\SQLEXPRESS2;initial catalog=Northwind;user id=NorthwindUser;password=password100"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthWindOverwriteModels",
+            "project-type": "classlib",
+            "namespace": "NorthWindOverwrite.Models",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthWindOverwriteServices",
+            "project-type": "classlib",
+            "namespace": "NorthWindOverwrite.Services",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "references": ["NorthWindOverwriteEngine", "NorthWindOverwriteModels"]
+        },
+        {
+            "project-name": "NorthWindOverwriteWebsite",
+            "project-type": "empty",
+            "namespace": "NorthWindOverwrite.Website",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Newtonsoft.Json"
+                }
+            ],
+            "references": ["NorthWindOverwriteEngine", "NorthWindOverwriteModels", "NorthWindOverwriteServices"]
+        }
+    ],
+    "actions": [
+        {
+            "action-name": "AddNPMPackages",
+            "description": "Create init file. Add tailwinds to project",
+            "action-type": "npm",
+            "commands": [
+                {
+                    
+                    "command": "cd ./NorthWindOverwrite/ && npm init -y"
+                },
+                {
+                    
+                    "command": "cd ./NorthWindOverwrite/ && npm i tailwindcss"
+                }
+            ]
+        }
+    ]
+}

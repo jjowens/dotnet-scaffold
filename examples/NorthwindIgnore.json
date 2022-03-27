@@ -1,0 +1,124 @@
+{
+    "project-name": "NorthwindIgnore",
+    "default-namespace": "NorthwindIgnore",
+    "description": "A project to demotsrate ignore flags",
+    "solution-name": "NorthwindIgnore",
+    "directory-path": "NorthwindIgnore",
+    "dry-run": false,
+    "export-to-file": true,
+    "display-command": true,
+    "projects": [
+        {
+            "project-name": "NorthwindIgnoreEngine",
+            "project-type": "classlib",
+            "namespace": "NorthwindIgnore.Engine",
+            "framework": "netcoreapp3.1",
+            "ignore": true,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "ef-databases": [
+                {
+                    "context-name" : "dbcontext",
+                    "database-connection": "data source=localhost\\SQLEXPRESS2;initial catalog=Northwind;user id=NorthwindUser;password=password100"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthwindIgnoreModels",
+            "project-type": "classlib",
+            "namespace": "NorthwindIgnore.Models",
+            "framework": "netcoreapp3.1",
+            "ignore": true,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthwindIgnoreServices",
+            "project-type": "classlib",
+            "namespace": "NorthwindIgnore.Services",
+            "framework": "netcoreapp3.1",
+            "ignore": true,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "references": ["NorthwindIgnoreEngine", "NorthwindIgnoreModels"]
+        },
+        {
+            "project-name": "NorthwindIgnoreWebsite",
+            "project-type": "mvc",
+            "namespace": "NorthwindIgnore.Website",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Newtonsoft.Json"
+                }
+            ],
+            "references": ["NorthwindIgnoreEngine", "NorthwindIgnoreModels", "NorthwindIgnoreServices"]
+        }
+    ],
+    "actions": [
+        {
+            "action-name": "AddNPMPackages",
+            "description": "Create init file. Add tailwinds to project",
+            "action-type": "npm",
+            "commands": [
+                {
+                    
+                    "command": "cd ./NorthwindIgnore/ && npm init -y"
+                },
+                {
+                    
+                    "command": "cd ./NorthwindIgnore/ && npm i tailwindcss"
+                }
+            ]
+        }
+    ]
+}

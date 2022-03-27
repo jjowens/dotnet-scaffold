@@ -1,0 +1,124 @@
+{
+    "project-name": "NorthWindExportOnly",
+    "default-namespace": "NorthWindExportOnly",
+    "description": "A project to export dotnet cli commands to file only. Dry-run flag set to true",
+    "solution-name": "NorthWindExportOnly",
+    "directory-path": "NorthWindExportOnly",
+    "dry-run": true,
+    "export-to-file": true,
+    "display-command": true,
+    "projects": [
+        {
+            "project-name": "NorthWindExportOnlyEngine",
+            "project-type": "classlib",
+            "namespace": "NorthWindExportOnly.Engine",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "ef-databases": [
+                {
+                    "context-name" : "dbcontext",
+                    "database-connection": "data source=localhost\\SQLEXPRESS2;initial catalog=Northwind;user id=NorthwindUser;password=password100"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthWindExportOnlyModels",
+            "project-type": "classlib",
+            "namespace": "NorthWindExportOnly.Models",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ]
+        },
+        {
+            "project-name": "NorthWindExportOnlyServices",
+            "project-type": "classlib",
+            "namespace": "NorthWindExportOnly.Services",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                }
+            ],
+            "references": ["NorthWindExportOnlyEngine", "NorthWindExportOnlyModels"]
+        },
+        {
+            "project-name": "NorthWindExportOnlyWebsite",
+            "project-type": "mvc",
+            "namespace": "NorthWindExportOnly.Website",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Microsoft.EntityFrameworkCore",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.Design",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Microsoft.EntityFrameworkCore.SqlServer",
+                    "version": "5.0.15"
+                },
+                {
+                    "name": "Newtonsoft.Json"
+                }
+            ],
+            "references": ["NorthWindExportOnlyEngine", "NorthWindExportOnlyModels", "NorthWindExportOnlyServices"]
+        }
+    ],
+    "actions": [
+        {
+            "action-name": "AddNPMPackages",
+            "description": "Create init file. Add tailwinds to project",
+            "action-type": "npm",
+            "commands": [
+                {
+                    
+                    "command": "cd ./NorthWindExportOnly/ && npm init -y"
+                },
+                {
+                    
+                    "command": "cd ./NorthWindExportOnly/ && npm i tailwindcss"
+                }
+            ]
+        }
+    ]
+}

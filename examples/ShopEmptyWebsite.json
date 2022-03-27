@@ -1,0 +1,24 @@
+{
+    "project-name": "ShopEmptyWebsite",
+    "default-namespace": "ShopEmpty.Website",
+    "description": "A project to create an empty website",
+    "solution-name": "ShopEmptyWebsite",
+    "directory-path": "ShopEmptyWebsite",
+    "dry-run": false,
+    "export-to-file": true,
+    "display-command": true,
+    "projects": [
+        {
+            "project-name": "ShopEmpty.Website",
+            "project-type": "empty",
+            "namespace": "ShopEmpty.Website",
+            "framework": "netcoreapp3.1",
+            "ignore": false,
+            "packages": [
+                {
+                    "name": "Newtonsoft.Json"
+                }
+            ]
+        }
+    ]
+}
